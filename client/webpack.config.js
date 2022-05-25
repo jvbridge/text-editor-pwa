@@ -23,10 +23,40 @@ module.exports = () => {
         title: "Just another text editor",
       }),
       new GenerateSW(),
+      new WebpackPwaManifest({
+        name: "Just Another Text Editor",
+        short_name: "JATE",
+        description: "Edit text like a pro",
+        start_url: "./",
+        publicPath: "./",
+        icons: [
+          // {
+          //   src: path.resolve("images/logo.png"),
+          //   size: "500x500",
+          //   destination: path.join("assets", "icons"),
+          // },
+        ],
+      }),
     ],
 
     module: {
-      rules: [],
+      rules: [
+        { test: /\.css$/i, use: ["style-loader", "css-loader"] },
+        {
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: "babel-loader",
+            options: {
+              presets: ["@babel/preset-env"],
+              plugins: [
+                "@babel/plugin-proposal-object-rest-spread",
+                "@babel/transform-runtime",
+              ],
+            },
+          },
+        },
+      ],
     },
   };
 };
