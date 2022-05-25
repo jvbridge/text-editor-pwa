@@ -29,4 +29,15 @@ export const getDb = async () => {
   return result;
 };
 
+export const deleteDb = async (id) => {
+  console.log("DELETE from the database", id);
+  const todosDb = await openDB("todos", 1);
+  const tx = todosDb.transaction("todos", "readwrite");
+  const store = tx.objectStore("todos");
+  const request = store.delete(id);
+  const result = await request;
+  console.log("result.value", result);
+  return result;
+};
+
 initdb();
