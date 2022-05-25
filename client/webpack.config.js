@@ -34,10 +34,10 @@ module.exports = () => {
           // },
         ],
       }),
-      // new InjectManifest({
-      //   swSrc: "./src-sw.js",
-      //   swDest: "service-worker.js",
-      // }),
+      new InjectManifest({
+        swSrc: "./src-sw.js",
+        swDest: "dist/service-worker.js",
+      }),
     ],
 
     module: {
