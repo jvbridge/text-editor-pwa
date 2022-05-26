@@ -12,14 +12,14 @@ const initdb = async () =>
     },
   });
 
-export const putDb = async (id, content) => {
+export const putDb = async (content) => {
   console.log("PUT to the database");
   const jateDb = await openDB("jate", 1);
   const tx = jateDb.transaction("jate", "readwrite");
   const store = tx.objectStore("jate");
-  const request = store.put({ id: id, jate: content });
+  const request = store.put({ jate: content });
   const result = await request;
-  console.log("🚀 - data saved to the database", result);
+  console.log("🚀 - data saved to the database:", result);
 };
 
 export const getDb = async () => {
@@ -30,18 +30,7 @@ export const getDb = async () => {
   const request = store.getAll();
   const result = await request;
   console.log("result value: ", result);
-  return result;
-};
-
-export const deleteDb = async (id) => {
-  console.log("DELETE from the database", id);
-  const jateDb = await openDB("jate", 1);
-  const tx = jateDb.transaction("jate", "readwrite");
-  const store = tx.objectStore("jate");
-  const request = store.delete(id);
-  const result = await request;
-  console.log("result.value", result);
-  return result;
+  return result[result.length - 1].jate;
 };
 
 initdb();
