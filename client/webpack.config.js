@@ -25,6 +25,7 @@ module.exports = () => {
         description: "Edit text like a pro",
         start_url: "/",
         publicPath: "/",
+        fingerprints: false,
         icons: [
           {
             src: path.resolve("src/images/logo.png"),
