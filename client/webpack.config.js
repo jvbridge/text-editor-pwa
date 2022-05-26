@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackPwaManifest = require("webpack-pwa-manifest");
 const path = require("path");
-const { InjectManifest, GenerateSW } = require("workbox-webpack-plugin");
+const { InjectManifest } = require("workbox-webpack-plugin");
 
 module.exports = () => {
   return {
@@ -19,7 +19,6 @@ module.exports = () => {
         template: "./index.html",
         title: "Just another text editor",
       }),
-      new GenerateSW(),
       new WebpackPwaManifest({
         name: "Just Another Text Editor",
         short_name: "JATE",
@@ -36,7 +35,7 @@ module.exports = () => {
       }),
       new InjectManifest({
         swSrc: "./src-sw.js",
-        swDest: "dist/service-worker.js",
+        swDest: "src-sw.js",
       }),
     ],
 
