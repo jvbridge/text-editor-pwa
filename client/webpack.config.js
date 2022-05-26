@@ -23,12 +23,13 @@ module.exports = () => {
         name: "Just Another Text Editor",
         short_name: "JATE",
         description: "Edit text like a pro",
-        start_url: "./",
-        publicPath: "./",
+        start_url: "/",
+        publicPath: "/",
+        fingerprints: false,
         icons: [
           {
             src: path.resolve("src/images/logo.png"),
-            sizes: [100, 200, 500],
+            sizes: [96, 128, 256, 512],
             destination: path.join("assets", "icons"),
           },
         ],
@@ -55,6 +56,14 @@ module.exports = () => {
               ],
             },
           },
+        },
+        {
+          test: /\.(png|jpe?g|gif)$/i,
+          use: [
+            {
+              loader: "file-loader",
+            },
+          ],
         },
       ],
     },
