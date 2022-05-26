@@ -26,11 +26,11 @@ module.exports = () => {
         start_url: "./",
         publicPath: "./",
         icons: [
-          // {
-          //   src: path.resolve("images/logo.png"),
-          //   sizes: [100, 200, 500],
-          //   destination: path.join("assets", "icons"),
-          // },
+          {
+            src: path.resolve("src/images/logo.png"),
+            sizes: [100, 200, 500],
+            destination: path.join("assets", "icons"),
+          },
         ],
       }),
       new InjectManifest({
